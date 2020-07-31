@@ -1,0 +1,73 @@
+table {
+  border-spacing: 0px;
+}
+
+.thTop {
+  vertical-align: top;
+}
+th{
+  vertical-align: top;
+}
+
+td,
+th {
+  padding: 0px;
+}
+
+td {
+  border: 1px solid #cccccc;
+  margin: 0px;
+  height: 60px;
+}
+
+
+.nivelText {
+  display: block !important;
+  text-align: justify;
+  margin-left: 50px;
+}
+
+.nivel {
+  border-radius: 100%;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 0px;
+}
+
+.gradeCell {
+  width: 141px;
+
+}
+
+.gradeCell :last-child {
+  /* background-color: #f0bfff; */
+  text-align: center;
+  width: 32px;
+  margin: auto;
+  border-radius: 100%;
+}
+
+.category {
+  width: 39px;
+  text-align: center;
+}
+.subCategory {
+  width: 152px;
+}
+.skill {
+  width: 217px;
+}
+.legend {
+  border: 1px solid #cccccc;
+  height: 121px;
+  width: 141px;
+  position: initial;
+}
+.divider {
+  width: 400px !important;
+  height: 50px;
+  border: 1px solid #cccccc;
+  color: #ff6a12;
+  font-size: 30px;
+}
