@@ -266,7 +266,7 @@ const Table = () => {
           </Grid>
         </Paper>
       </Grid>
-      {/* Aqui Começa outro */}
+      {/* Aqui Começa outro    */}
 
       <Paper
         className={fixedHeightPaper}
