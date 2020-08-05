@@ -687,7 +687,6 @@ let usersSquad = [
 ];
 
 module.exports = {
-  // these 3 are used to create the tasks lists in TasksCard - Dashboard view
   categories,
   evaluations,
   usersSquad,

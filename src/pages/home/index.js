@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import clsx from "clsx";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -11,12 +11,9 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
-  Switch,
-  Checkbox,
   TableRow,
   TableCell,
   TableContainer,
-  TableHead,
   TableBody,
   Table,
 } from "@material-ui/core";
@@ -115,20 +112,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = (props) => {
-  const [cor, setCor] = useState("#bbc2cc");
 
-  const setColor = {
-    1: () => setCor("#bb1f24"),
-    2: () => console.log("2"),
-    3: () => console.log("passou aqui"),
-    4: () => console.log("passou aqui"),
-    5: () => console.log("passou aqui"),
-  };
-
-  const valor = (props) => {
-    !!props && console.log(document.getElementById(props?.id));
-    // return props;
-  };
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.paperInfoSquad);
 
@@ -141,7 +125,7 @@ const Home = (props) => {
             {/* Aqui começa as info da Squad */}
             <Grid container spacing={1} style={{ height: "100%" }}>
               <Grid item lg={1} container alignItems="center" justify="center">
-                <img src="../logo192.png" width="49px" />
+                {/* <img src="../logo192.png" width="49px" /> */}
               </Grid>
               <Grid item lg={10} container alignItems="center">
                 <Typography className={classes.typographyBold}>
