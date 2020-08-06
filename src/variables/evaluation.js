@@ -157,7 +157,7 @@ let categories = [
   },
 ];
 
-let evaluations = [
+let grades = [
   {
     id: 10,
     grade: 5,
@@ -688,6 +688,6 @@ let usersSquad = [
 
 module.exports = {
   categories,
-  evaluations,
+  grades,
   usersSquad,
 };
