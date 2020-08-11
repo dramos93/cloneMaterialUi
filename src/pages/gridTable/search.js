@@ -18,7 +18,7 @@ export default function Search(props) {
   const [filteredSkills, setFilteredSkills] = useState([]);
   const [skillFilteredCategories, setSkillFilteredCategories] = useState([]);
 
-  const searchSkills =  (event) => {
+  const searchSkills = (event) => {
     setFilteredSkills([]);
     setSkillFilteredCategories([]);
     setSkillFilteredCategories(
@@ -38,7 +38,6 @@ export default function Search(props) {
     );
   };
 
-  console.log(filteredSkills);
   return (
     <Grid item xs={12}>
       <Paper className={fixedHeightPaper}>
@@ -62,12 +61,15 @@ export default function Search(props) {
               Habilidade
             </Typography>
             <Autocomplete
-              options={skillFilteredCategories}
+              options={filteredSkills}
               getOptionLabel={(option) => option.name}
+              onChange={(event) => {
+                console.log(event.target.value);
+              }}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  fullWidth
+                  
                   margin="none"
                   size="small"
                   // placeholder="Pesquisar"
