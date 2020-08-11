@@ -169,7 +169,7 @@ const Table = () => {
                 <div style={{ marginTop: 171 }}>
                   {categories.map((category) => (
                     <table style={{ width: 400 }}>
-                      <tr style={{}}>
+                      <tr>
                         <td className="category">
                           <p
                             style={{

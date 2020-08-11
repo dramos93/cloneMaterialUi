@@ -36,7 +36,7 @@ export default function Legend() {
   return (
     <Grid className={classes.legend} container>
       {grades.map((grade) => (
-        <Grid item lg={6} xs={6} container alignItems="center">
+        <Grid key={grade.levelCompetence} item lg={6} xs={6} container alignItems="center">
           <Grid container direction="row" alignItems="center">
             <Typography className={grade.classColor}>{grade.grade}</Typography>
             <Typography className={classes.levelCompetence}>&nbsp;{grade.levelCompetence}</Typography>

@@ -15,14 +15,14 @@ let categories = [
         neto: [
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e1",
-            name: "Habilidade Scrum 1",
+            name: "Habilidade Scrum 1A",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f61",
             global: false,
             active: true,
           },
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e2",
-            name: "Habilidade Scrum 2",
+            name: "Habilidade Scrum 2A",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f62",
             global: false,
             active: true,
@@ -38,14 +38,14 @@ let categories = [
         neto: [
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e3",
-            name: "Habilidade Solid 1",
+            name: "Habilidade Solid 1A",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f63",
             global: false,
             active: true,
           },
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e4",
-            name: "Habilidade Solid 2",
+            name: "Habilidade Solid 2A",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f64",
             global: false,
             active: true,
@@ -61,14 +61,14 @@ let categories = [
         neto: [
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e5",
-            name: "Habilidade negócios 1",
+            name: "Habilidade negócios 1A",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f65",
             global: false,
             active: true,
           },
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e6",
-            name: "Habilidade negócios 2",
+            name: "Habilidade negócios 2A",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f66",
             global: false,
             active: true,
@@ -93,14 +93,14 @@ let categories = [
         neto: [
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e7",
-            name: "Habilidade Scrum 1",
+            name: "Habilidade Scrum 1B",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f61",
             global: false,
             active: true,
           },
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e8",
-            name: "Habilidade Scrum 2",
+            name: "Habilidade Scrum 2B",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f62",
             global: false,
             active: true,
@@ -116,14 +116,14 @@ let categories = [
         neto: [
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e9",
-            name: "Habilidade Solid 1",
+            name: "Habilidade Solid 1B",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f63",
             global: false,
             active: true,
           },
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e10",
-            name: "Habilidade Solid 2",
+            name: "Habilidade Solid 2B",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f64",
             global: false,
             active: true,
@@ -139,14 +139,14 @@ let categories = [
         neto: [
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e11",
-            name: "Habilidade negócios 1",
+            name: "Habilidade negócios 1B",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f65",
             global: false,
             active: true,
           },
           {
             id: "5244a3a9-8cb8-4afe-8fbb-782af21685e12",
-            name: "Habilidade negócios 2",
+            name: "Habilidade negócios 2B",
             categoryParentId: "f344c85e-de4d-4c48-9015-03f700ed4f66",
             global: false,
             active: true,
@@ -678,12 +678,15 @@ let usersSquad = [
   { id: 4, user: { fisrtName: "Ronaldinho", photo: "Foto" } },
   { id: 5, user: { fisrtName: "Bebeto", photo: "Foto" } },
   { id: 6, user: { fisrtName: "Romário", photo: "Foto" } },
-  { id: 7, user: { fisrtName: "Cristiano Ronaldo", photo: "Foto" } },
+  {
+    id: 7,
+    user: { fisrtName: "Cristiano Ronaldo Ronaldo Ronaldo", photo: "Foto" },
+  },
   { id: 8, user: { fisrtName: "Julio Cesar", photo: "Foto" } },
   { id: 9, user: { fisrtName: "Kaka", photo: "Foto" } },
   { id: 10, user: { fisrtName: "Cebolinha", photo: "Foto" } },
   { id: 11, user: { fisrtName: "Monica", photo: "Foto" } },
-  { id: 12, user: { fisrtName: "Cafu", photo: "Foto" } },
+  { id: 12, user: { fisrtName: "Cafu", photo: "Foto" } },  { id: 8, user: { fisrtName: "Julio Cesar", photo: "Foto" } },
 ];
 
 module.exports = {

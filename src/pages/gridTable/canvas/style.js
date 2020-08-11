@@ -2,27 +2,29 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   canvas: {
-    height: theme.spacing(100), //Relativo: Altura da tela - papers
-    width: theme.spacing(225),
+    height: theme.spacing(100),
+    width: "100%",
     overflowY: "auto",
     overflowX: "auto",
+    scrollbarColor: "#FF6A12 #00000000",
+    scrollbarWidth: "thin",
     "&::-webkit-scrollbar": {
-      width: "0.4em",
+      width: 0,
+      height: 10,
     },
     "&::-webkit-scrollbar-track": {
-      "-webkit-box-shadow": "inset 0 0 2px #FF6A12",
+      "-webkit-box-shadow": "none",
       marginLeft: theme.spacing(50),
     },
     "&::-webkit-scrollbar-thumb": {
       backgroundColor: "#FF6A12",
-      outline: "1px solid slategrey",
-      borderRadius: "15px",
+      borderRadius: "10px",
     },
   },
   menu: {
     maxWidth: theme.spacing(50),
+    minWidth: theme.spacing(50),
     height: "100%",
-    backgroundColor: "#484848",
     zIndex: 99,
     position: "sticky",
     left: 0,
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   userGrade: {
     height: "100%",
-    width: "auto",
+    width: theme.spacing(17.5),
   },
   user: {
     backgroundColor: "white",
@@ -41,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
     position: "sticky",
     top: 0,
     zIndex: 9,
-
   },
   userInfo: {
     border: "1px solid #BBC2CC",
@@ -75,7 +76,6 @@ const useStyles = makeStyles((theme) => ({
     "& :last-child": {
       width: theme.spacing(4),
       height: theme.spacing(4),
-      backgroundColor: "#FFECBA",
       textAlign: "center",
       margin: "auto",
       borderRadius: "100%",
@@ -137,6 +137,36 @@ const useStyles = makeStyles((theme) => ({
   },
   colorLevel5: {
     backgroundColor: "#F0BFFF ",
+  },
+  colorGrade1: {
+    "& :last-child": {
+      backgroundColor: "#FFB9AE",
+    },
+  },
+  colorGrade2: {
+    "& :last-child": {
+      backgroundColor: "#FFECBA",
+    },
+  },
+  colorGrade3: {
+    "& :last-child": {
+      backgroundColor: "#E6F8B3",
+    },
+  },
+  colorGrade4: {
+    "& :last-child": {
+      backgroundColor: "#BFE7FF ",
+    },
+  },
+  colorGrade5: {
+    "& :last-child": {
+      backgroundColor: "#F0BFFF ",
+    },
+  },
+  notGrade: {
+    "& :last-child": {
+      border: "1px solid #BBC2CC",
+    },
   },
   categories: {
     backgroundColor: "#ffffff",
