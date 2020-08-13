@@ -8,7 +8,6 @@ const Skills = (props) => {
   useEffect(() => {
     setSkills((s) => [...s, skill.id]);
   }, [skill, setSkills]);
-
   return (
     <Grid
       key={skill.id}

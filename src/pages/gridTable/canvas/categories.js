@@ -9,19 +9,19 @@ const Categories = (props) => {
   const classes = useStyles();
   return (
     <Grid container>
-      {categories.map((category) => (
+      {categories?.map((category) => (
         <Grid key={category.id} item xs lg container>
           <Grid className={clsx(classes.center, classes.categories)}>
             <p className={classes.textCategory}>{category.name}</p>
           </Grid>
           <Grid item xs lg>
-            {category.filho.map((subCategory) => (
+            {category?.filho?.map((subCategory) => (
               <Grid key={subCategory.id} container>
                 <Grid className={clsx(classes.center, classes.subcategories)}>
                   {subCategory.name}
                 </Grid>
                 <Grid item xs lg>
-                  {subCategory.neto.map((skill) => {
+                  {subCategory?.neto?.map((skill) => {
                     let propsSkills = {...props, skill, classes}
                     return (
                       <Skills {...propsSkills}/>

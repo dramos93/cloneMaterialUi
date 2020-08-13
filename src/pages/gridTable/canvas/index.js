@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import useStyles from "./style";
 import { Grid, Typography } from "@material-ui/core";
 import Legend from "./legend.js";
@@ -10,7 +10,6 @@ import User from "./user.js";
 const Canvas = (props) => {
   
   const classes = useStyles();
-  const [skills, setSkills] = useState([]);
 
   return (
     <Grid className={classes.canvas} container direction="row">
@@ -19,7 +18,7 @@ const Canvas = (props) => {
         <Grid className={clsx(classes.competence, classes.center)}>
           <Typography className={classes.textCompetence}>Técnico</Typography>
         </Grid>
-        <Categories {...props} setSkills={setSkills} />
+        <Categories {...props}/>
       </Grid>
       <Grid
         item
@@ -32,7 +31,7 @@ const Canvas = (props) => {
         alignItems="flex-start"
       >
         {usersSquad.map((user) => (
-          <User user={user} skills={skills} classes={classes}/>
+          <User user={user} {...props} classes={classes}/>
         ))}
       </Grid>
       <Grid item lg xs></Grid>
