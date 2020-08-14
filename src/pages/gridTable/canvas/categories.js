@@ -8,14 +8,34 @@ import { useCanvas } from "../Context/canvas.js";
 const Categories = () => {
   const { categories } = useCanvas();
   const classes = useStyles();
+  const func = (category) => {
+    let i = 0;
+    category.filho.map((x) => x.neto.map((y) => i++));
+    console.log("tamanho da palavra" + category.name.length);
+    console.log("quantidade de filhos" + i);
+    console.log(
+      category.name.length > i * 3 ? category.name.slice(0, i * 3) + "..." : category.name
+    );
 
+
+// let inv = {optionOne: function(){}}
+
+    return category.name.slice(0, i * 3);
+  };
   return (
     <Grid container>
       {categories?.map((category) => (
         <Grid key={category.id} item xs lg container>
-          <Grid className={clsx(classes.center, classes.categories)}>
-            {/* {console.log(category?.map((x) => x))} */}
-            <pre className={classes.textCategory}>{category.name}</pre>
+          <Grid
+            className={clsx(classes.center, classes.categories)}
+            onMouseOver={() => {
+              let i = 0;
+
+              category.filho.map((x) => x.neto.map((y) => i++));
+              console.log(i);
+            }}
+          >
+            <pre className={classes.textCategory}>{func(category)}</pre>
           </Grid>
           <Grid item xs lg>
             {category?.filho?.map((subCategory) => (
