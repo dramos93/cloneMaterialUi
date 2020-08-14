@@ -6,10 +6,9 @@ import { useCanvas } from "../Context/canvas.js";
 const Skills = (props) => {
   const { classes, skill } = props.value;
   const { setSkills } = useCanvas();
-
   useEffect(() => {
     setSkills((s) => [...s, skill.id]);
-  }, []);
+  }, [setSkills, skill]);
 
   return (
     <Grid

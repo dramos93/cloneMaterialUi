@@ -4,7 +4,7 @@ import { categories as categoriesDataBase } from "../../../variables/evaluation.
 const CanvasContext = createContext();
 
 export default function CanvasProvider({ children }) {
-  const [categories, setCategories] = useState(categoriesDataBase);
+  const [categories, setCategories] = useState(Object.assign([],categoriesDataBase));
   const [skills, setSkills] = useState([]);
 
   return (

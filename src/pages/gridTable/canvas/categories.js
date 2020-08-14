@@ -14,7 +14,8 @@ const Categories = () => {
       {categories?.map((category) => (
         <Grid key={category.id} item xs lg container>
           <Grid className={clsx(classes.center, classes.categories)}>
-            <p className={classes.textCategory}>{category.name}</p>
+            {/* {console.log(category?.map((x) => x))} */}
+            <pre className={classes.textCategory}>{category.name}</pre>
           </Grid>
           <Grid item xs lg>
             {category?.filho?.map((subCategory) => (

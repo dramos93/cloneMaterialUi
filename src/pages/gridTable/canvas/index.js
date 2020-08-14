@@ -30,7 +30,7 @@ const Canvas = () => {
         alignItems="flex-start"
       >
         {usersSquad.map((user) => (
-          <User user={user} classes={classes} />
+          <User key={user.id}user={user} classes={classes} />
         ))}
       </Grid>
       <Grid item lg xs></Grid>

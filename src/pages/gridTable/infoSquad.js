@@ -47,7 +47,7 @@ const InfoSquad = () => {
             <Typography>João Carlos, Marcos Machados</Typography>
           </Grid>
           <Grid item lg={1} container alignItems="center">
-            <Grid direction="row" justify="flex-end" alignItems="center">
+            <Grid container direction="row" justify="flex-end" alignItems="center">
               <Button color="secondary" variant="contained">
                 Gráficos
               </Button>

@@ -19,16 +19,22 @@ export default function Search() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.paperInfoSquad);
   const [filteredSkills, setFilteredSkills] = useState([]); //lista dos netos encontrados.
-  const [skillFilteredCategories, setSkillFilteredCategories] = useState([]); //lista de netos selecionados por TAG
+  const [filteredCategories, setFilteredCategories] = useState([]); //lista dos filhos encontrados.
+  const [skillFilteredCategoriesTag, setSkillFilteredCategoriesTag] = useState(
+    []
+  ); //lista de netos selecionados por TAG
+  const [categoryFilteredTag, setCategoryFilteredTag] = useState([]); //lista de netos selecionados por TAG
   const [reloadTag, setReloadTag] = useState(true); //limpa Tags
   const [textSkill, setTextSkill] = useState(false); //mostra o texto no input skill
-  const [showOptionText, setShowOptionText] = useState(true); //não mostra o erro quando true
+  const [textCategory, setTextCategory] = useState(false); //mostra o texto no input skill
+  const [showOptionTextSkill, setShowOptionTextSkill] = useState(true); //não mostra o erro quando true
+  const [showOptionTextCategory, setShowOptionTextCategory] = useState(true); //não mostra o erro quando true
 
   const searchSkills = (event) => {
     setFilteredSkills([]);
 
     if (event.target?.value?.length > 2) {
-      setShowOptionText(false);
+      setShowOptionTextSkill(false);
       categories.map((x) => {
         let a = x?.filho.map((y) => {
           let b = y?.neto.filter((z) => {
@@ -45,11 +51,29 @@ export default function Search() {
         return a;
       });
     } else {
-      setShowOptionText(true);
+      setShowOptionTextSkill(true);
     }
   };
 
-  const searchCategories = [];
+  const searchCategories = (event) => {
+    setFilteredCategories([]);
+
+    if (event.target?.value?.length > 2) {
+      setShowOptionTextCategory(false);
+      categories.map((x) => {
+        let a = x?.filho.filter((y) => {
+          if (y.name.toLowerCase().includes(event.target.value.toLowerCase())) {
+            setFilteredCategories((category) => [...category, y]);
+            return y;
+          }
+          return null;
+        });
+        return a;
+      });
+    } else {
+      setShowOptionTextCategory(true);
+    }
+  };
 
   return (
     <Grid item xs={12}>
@@ -59,32 +83,17 @@ export default function Search() {
             <Typography className={classes.typographyBold}>
               Categoria
             </Typography>
-            <TextField
-              margin="none"
-              size="small"
-              placeholder="Pesquisar"
-              variant="outlined"
-            />
-            <Typography variant="caption">
-              Digite no mínimo 3 caracteres
-            </Typography>
-          </Grid>
-          <Grid item lg={4} container direction="column">
-            <Typography className={classes.typographyBold}>
-              Habilidade
-            </Typography>
             <Autocomplete
-              noOptionsText="Habilidade não encontrada"
+              noOptionsText="Categoria não encontrada"
               multiple
               size="small"
               limitTags={2}
-              options={filteredSkills}
-              freeSolo={showOptionText}
-              filterSelectedOptions
+              options={filteredCategories}
+              freeSolo={showOptionTextCategory}
               key={reloadTag}
               getOptionLabel={(option) => option.name}
               renderTags={(value, getTagProps) => {
-                setSkillFilteredCategories(value);
+                setCategoryFilteredTag(value);
                 return value?.map((option, index) => (
                   <Chip
                     variant="outlined"
@@ -100,14 +109,58 @@ export default function Search() {
                   {...params}
                   margin="none"
                   size="small"
+                  variant="outlined"
+                  onFocus={() => {
+                    setTextCategory(true);
+                  }}
+                  onChange={searchCategories}
+                  onBlur={() => setTextCategory(false)}
+                />
+              )}
+            />
+            {textCategory && (
+              <Typography variant="caption">
+                Digite no mínimo 3 caracteres
+              </Typography>
+            )}
+          </Grid>
+          <Grid item lg={4} container direction="column">
+            <Typography className={classes.typographyBold}>
+              Habilidade
+            </Typography>
+            <Autocomplete
+              noOptionsText="Habilidade não encontrada"
+              multiple
+              size="small"
+              limitTags={2}
+              options={filteredSkills}
+              freeSolo={showOptionTextSkill}
+              //filterSelectedOptions
+              key={reloadTag}
+              getOptionLabel={(option) => option.name}
+              renderTags={(value, getTagProps) => {
+                setSkillFilteredCategoriesTag(value);
+                return value?.map((option, index) => (
+                  <Chip
+                    variant="outlined"
+                    label={option.name}
+                    size="small"
+                    {...getTagProps({ index })}
+                    color="primary"
+                  />
+                ));
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  margin="none"
+                  size="small"
+                  variant="outlined"
                   onFocus={() => {
                     setTextSkill(true);
                   }}
-                  variant="outlined"
                   onChange={searchSkills}
-                  onBlur={() => {
-                    setTextSkill(false);
-                  }}
+                  onBlur={() => setTextSkill(false)}
                 />
               )}
             />
@@ -127,11 +180,13 @@ export default function Search() {
           >
             <Button
               variant="outlined"
-              onClick={() => {
-                setFilteredSkills([]);
-                setSkillFilteredCategories([]);
-                setReloadTag((t) => !t);
-                setCategories(categoriesDataBase);
+              disabled={!categoryFilteredTag.length && !skillFilteredCategoriesTag.length}
+              onClick={async () => {
+                // setFilteredSkills([]);
+                // setSkillFilteredCategoriesTag([]);
+                console.log(categoriesDataBase);
+                await setCategories(categoriesDataBase);
+                await setReloadTag((t) => !t);
               }}
             >
               Limpar
@@ -140,24 +195,37 @@ export default function Search() {
             <Button
               color="secondary"
               variant="contained"
+              disabled={!categoryFilteredTag.length && !skillFilteredCategoriesTag.length}
               onClick={async () => {
-                await setSkills(skillFilteredCategories?.map((x) => x.id));
-                setCategories((x) =>
+                await setCategories((x) =>
                   x.filter((pai) => {
                     let arrayFilhos = pai.filho.filter((filho) => {
-                      let arrayNeto = filho.neto.filter((neto) => {
-                        let skills = skillFilteredCategories.some((x) => {
-                          return (
-                            x.name.toLowerCase() === neto.name.toLowerCase()
-                          );
+                      if (
+                        !categoryFilteredTag.some((f) => f.name === filho.name)
+                      ) {
+                        filho.neto = filho.neto.filter((neto) => {
+                          let skills = skillFilteredCategoriesTag.some((x) => {
+                            return (
+                              x.name.toLowerCase() === neto.name.toLowerCase()
+                            );
+                          });
+                          return skills;
                         });
-                        return skills;
-                      });
-                      return arrayNeto.length > 0 && (filho.neto = arrayNeto);
+                      }
+                      return filho.neto.length > 0 && filho.neto;
                     });
                     return arrayFilhos.length > 0 && (pai.filho = arrayFilhos);
                   })
                 );
+                await setSkills(() => {
+                  let skill = [];
+                  categories.map((p) =>
+                    p.filho.map((f) =>
+                      f.neto.map((n) => (skill = [...skill, n.id]))
+                    )
+                  );
+                  return skill;
+                });
               }}
             >
               Filtrar

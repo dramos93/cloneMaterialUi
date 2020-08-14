@@ -7,10 +7,8 @@ export default function Grade(props) {
   const { user, classes, skill } = props;
   const [openEditGrade, setOpenEditGrade] = useState(false);
   const [grade, setGrade] = useState(
-    grades.find(
-      (grade) =>
-        grade.userSquadId === user.id && grade.categorySkillId === skill
-    )?.grade
+    grades.find((g) => g.userSquadId === user.id && g.categorySkillId === skill)
+      ?.grade
   );
 
   const cellGradeColor = {

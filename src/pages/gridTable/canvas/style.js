@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 99,
     position: "sticky",
     left: 0,
+    backgroundColor: "#fafafa",
   },
   info: {
     height: "100%",
@@ -172,15 +173,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#ffffff",
     border: "1px solid #BBC2CC",
     width: theme.spacing(3.5),
+    overflow: "hidden",
+    contain: "size"
   },
   textCategory: {
     color: "#FF6A12",
-    width: 8,
+    width: 14,
     wordWrap: "break-word",
     whiteSpace: "break-spaces",
-    fontSize: 14,
-    fontWeight: "bold",
     textAlign: "center",
+    fontSize: 15,
+    fontWeight: "bold",
   },
   subcategories: {
     backgroundColor: "#f8f8f8",

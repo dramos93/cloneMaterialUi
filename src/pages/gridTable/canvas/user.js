@@ -31,7 +31,7 @@ export default function User(props) {
         </Grid>
       </Grid>
       {skills.map((skill) => (
-        <Grade skill={skill} {...props} />
+        <Grade key={skill} skill={skill} {...props} />
       ))}
     </Grid>
   );
