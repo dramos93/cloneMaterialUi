@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import clsx from "clsx";
+import { useCanvas } from "../Context/canvas.js";
 
 const Skills = (props) => {
-  const { classes, skill, setSkills } = props;
+  const { classes, skill } = props.value;
+  const { setSkills } = useCanvas();
 
   useEffect(() => {
     setSkills((s) => [...s, skill.id]);
-  }, [skill, setSkills]);
+  }, []);
+
   return (
     <Grid
       key={skill.id}

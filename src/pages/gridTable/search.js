@@ -12,23 +12,26 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import useStyles from "./style";
 import clsx from "clsx";
 import { categories as categoriesDataBase } from "../../variables/evaluation";
+import { useCanvas } from "./Context/canvas.js";
 
-export default function Search(props) {
-  const { setCategories, categories, setSkills } = props;
+export default function Search() {
+  const { setCategories, categories, setSkills } = useCanvas();
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.paperInfoSquad);
   const [filteredSkills, setFilteredSkills] = useState([]); //lista dos netos encontrados.
   const [skillFilteredCategories, setSkillFilteredCategories] = useState([]); //lista de netos selecionados por TAG
   const [reloadTag, setReloadTag] = useState(true); //limpa Tags
-  const [textSkill, setTextSkill] = useState(true); //mostra o texto no input skill
+  const [textSkill, setTextSkill] = useState(false); //mostra o texto no input skill
   const [showOptionText, setShowOptionText] = useState(true); //não mostra o erro quando true
 
   const searchSkills = (event) => {
     setFilteredSkills([]);
+
     if (event.target?.value?.length > 2) {
+      setShowOptionText(false);
       categories.map((x) => {
-        let a = x.filho.map((y) => {
-          let b = y.neto.filter((z) => {
+        let a = x?.filho.map((y) => {
+          let b = y?.neto.filter((z) => {
             if (
               z.name.toLowerCase().includes(event.target.value.toLowerCase())
             ) {
@@ -41,11 +44,12 @@ export default function Search(props) {
         });
         return a;
       });
-      setShowOptionText(false);
     } else {
       setShowOptionText(true);
     }
   };
+
+  const searchCategories = [];
 
   return (
     <Grid item xs={12}>
@@ -104,9 +108,6 @@ export default function Search(props) {
                   onBlur={() => {
                     setTextSkill(false);
                   }}
-                  onClick={() => {
-                    setFilteredSkills([]);
-                  }}
                 />
               )}
             />
@@ -140,45 +141,23 @@ export default function Search(props) {
               color="secondary"
               variant="contained"
               onClick={async () => {
-                // setCategories([]);
-                setSkills([]);
-                // console.log(
-                //   categories.filter((pai) => {
-                //     let arrayFilhos = pai.filho.filter((filho) => {
-                //       let arrayNeto = filho.neto.filter((neto) =>
-                //         skillFilteredCategories.some(
-                //           (x) => x.name === neto.name
-                //         )
-                //       );
-                //       return arrayNeto.length > 0 && (filho.neto = arrayNeto);
-                //     });
-
-                //     return arrayFilhos.length > 0 && (pai.filho = arrayFilhos);
-                //   })
-                // );
-                await setCategories(
-                  categories.filter((pai) => {
+                await setSkills(skillFilteredCategories?.map((x) => x.id));
+                setCategories((x) =>
+                  x.filter((pai) => {
                     let arrayFilhos = pai.filho.filter((filho) => {
                       let arrayNeto = filho.neto.filter((neto) => {
-                        return skillFilteredCategories.some((x) => {
-                          console.log(
-                            `${x.name} * ${
-                              x.name.toLowerCase() === neto.name.toLowerCase()
-                            } * ${neto.name}`
-                          );
-
+                        let skills = skillFilteredCategories.some((x) => {
                           return (
                             x.name.toLowerCase() === neto.name.toLowerCase()
                           );
                         });
+                        return skills;
                       });
                       return arrayNeto.length > 0 && (filho.neto = arrayNeto);
                     });
-
                     return arrayFilhos.length > 0 && (pai.filho = arrayFilhos);
                   })
                 );
-                console.log(categories);
               }}
             >
               Filtrar

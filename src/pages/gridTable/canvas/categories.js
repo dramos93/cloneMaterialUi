@@ -2,11 +2,13 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import useStyles from "./style";
 import clsx from "clsx";
-import Skills from "./skills.js"
+import Skills from "./skills.js";
+import { useCanvas } from "../Context/canvas.js";
 
-const Categories = (props) => {
-  const {categories} = props;
+const Categories = () => {
+  const { categories } = useCanvas();
   const classes = useStyles();
+
   return (
     <Grid container>
       {categories?.map((category) => (
@@ -22,10 +24,7 @@ const Categories = (props) => {
                 </Grid>
                 <Grid item xs lg>
                   {subCategory?.neto?.map((skill) => {
-                    let propsSkills = {...props, skill, classes}
-                    return (
-                      <Skills {...propsSkills}/>
-                    )
+                    return <Skills key={skill.id} value={{ skill, classes }} />;
                   })}
                 </Grid>
               </Grid>

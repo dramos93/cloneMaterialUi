@@ -2,9 +2,11 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import Grade from "./grade.js";
+import { useCanvas } from "../Context/canvas.js";
 
 export default function User(props) {
-  const { skills, user, classes } = props;
+  const { user, classes } = props;
+  const { skills } = useCanvas();
 
   return (
     <Grid className={classes.userGrade} key={user.id}>

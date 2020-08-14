@@ -7,8 +7,7 @@ import Categories from "./categories.js";
 import { usersSquad } from "../../../variables/evaluation";
 import User from "./user.js";
 
-const Canvas = (props) => {
-  
+const Canvas = () => {
   const classes = useStyles();
 
   return (
@@ -18,7 +17,7 @@ const Canvas = (props) => {
         <Grid className={clsx(classes.competence, classes.center)}>
           <Typography className={classes.textCompetence}>Técnico</Typography>
         </Grid>
-        <Categories {...props}/>
+        <Categories />
       </Grid>
       <Grid
         item
@@ -31,7 +30,7 @@ const Canvas = (props) => {
         alignItems="flex-start"
       >
         {usersSquad.map((user) => (
-          <User user={user} {...props} classes={classes}/>
+          <User user={user} classes={classes} />
         ))}
       </Grid>
       <Grid item lg xs></Grid>
