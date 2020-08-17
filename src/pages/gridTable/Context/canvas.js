@@ -4,8 +4,23 @@ import { categories as categoriesDataBase } from "../../../variables/evaluation.
 const CanvasContext = createContext();
 
 export default function CanvasProvider({ children }) {
-  const [categories, setCategories] = useState(Object.assign([],categoriesDataBase));
+  const obj = Object.assign([], categoriesDataBase);
+  // Object.seal(obj);
+  const [categories, setCategories] = useState(obj);
   const [skills, setSkills] = useState([]);
+
+  // function deepFreeze(obj) {
+  //   const props = Object.getOwnPropertyNames(obj);
+  //   props.forEach(function (name) {
+  //     const prop = obj[name];
+  //     if (typeof prop === "object" && prop !== null) {
+  //       deepFreeze(prop);
+  //     }
+  //   });
+  //   return Object.freeze(obj);
+  // }
+  // deepFreeze(categoriesDataBase);
+  // console.log(categoriesDataBase);
 
   return (
     <CanvasContext.Provider
@@ -18,6 +33,6 @@ export default function CanvasProvider({ children }) {
 export function useCanvas() {
   const context = useContext(CanvasContext);
 
-  const { categories, setCategories, skills, setSkills} = context;
-  return { categories, setCategories, skills, setSkills};
+  const { categories, setCategories, skills, setSkills } = context;
+  return { categories, setCategories, skills, setSkills };
 }

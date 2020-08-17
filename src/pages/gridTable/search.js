@@ -7,6 +7,10 @@ import {
   Button,
   TextField,
   Chip,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import useStyles from "./style";
@@ -29,6 +33,7 @@ export default function Search() {
   const [textCategory, setTextCategory] = useState(false); //mostra o texto no input skill
   const [showOptionTextSkill, setShowOptionTextSkill] = useState(true); //não mostra o erro quando true
   const [showOptionTextCategory, setShowOptionTextCategory] = useState(true); //não mostra o erro quando true
+  const [openClear, setOpenClear] = useState(false);
 
   const searchSkills = (event) => {
     setFilteredSkills([]);
@@ -86,6 +91,7 @@ export default function Search() {
             <Autocomplete
               noOptionsText="Categoria não encontrada"
               multiple
+              filterSelectedOptions
               size="small"
               limitTags={2}
               options={filteredCategories}
@@ -135,7 +141,7 @@ export default function Search() {
               limitTags={2}
               options={filteredSkills}
               freeSolo={showOptionTextSkill}
-              //filterSelectedOptions
+              filterSelectedOptions
               key={reloadTag}
               getOptionLabel={(option) => option.name}
               renderTags={(value, getTagProps) => {
@@ -180,11 +186,12 @@ export default function Search() {
           >
             <Button
               variant="outlined"
-              disabled={!categoryFilteredTag.length && !skillFilteredCategoriesTag.length}
+              disabled={
+                !categoryFilteredTag.length &&
+                !skillFilteredCategoriesTag.length
+              }
               onClick={async () => {
-                // setFilteredSkills([]);
-                // setSkillFilteredCategoriesTag([]);
-                console.log(categoriesDataBase);
+                setOpenClear(true);
                 await setCategories(categoriesDataBase);
                 await setReloadTag((t) => !t);
               }}
@@ -195,7 +202,10 @@ export default function Search() {
             <Button
               color="secondary"
               variant="contained"
-              disabled={!categoryFilteredTag.length && !skillFilteredCategoriesTag.length}
+              disabled={
+                !categoryFilteredTag.length &&
+                !skillFilteredCategoriesTag.length
+              }
               onClick={async () => {
                 await setCategories((x) =>
                   x.filter((pai) => {
@@ -233,6 +243,17 @@ export default function Search() {
           </Grid>
         </Grid>
       </Paper>
+      <Dialog open={openClear} close={setOpenClear}>
+        <DialogTitle onClose>
+          <Typography>Modal title</Typography>
+        </DialogTitle>
+        <DialogContent dividers>Aqui vai estar a mensagem</DialogContent>
+        <DialogActions>
+          <Button autoFocus color="primary">
+            Save changes
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Grid>
   );
 }
