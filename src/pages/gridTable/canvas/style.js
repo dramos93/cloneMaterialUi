@@ -2,7 +2,12 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   canvas: {
-    height: theme.spacing(100),
+    height: "calc(100vh - 350px)",
+    margin: theme.spacing(1),
+    marginBottom: theme.spacing(5),
+    [theme.breakpoints.down("lg")]: {
+      height: "calc(100vh - 400px)",
+    },
     width: "100%",
     overflowY: "auto",
     overflowX: "auto",
@@ -174,7 +179,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #BBC2CC",
     width: theme.spacing(3.5),
     overflow: "hidden",
-    contain: "size"
+    contain: "size",
   },
   textCategory: {
     color: "#FF6A12",
@@ -200,5 +205,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 15,
     fontWeight: "bold",
   },
+  buttonSaveGrades: {
+    position: "fixed", bottom: 20, right: 40
+  }
 }));
 export default useStyles;

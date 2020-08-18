@@ -6,7 +6,7 @@ import { useCanvas } from "../Context/canvas.js";
 
 export default function User(props) {
   const { user, classes } = props;
-  const { skills } = useCanvas();
+  const { skills, reloadGrades } = useCanvas();
 
   return (
     <Grid className={classes.userGrade} key={user.id}>
@@ -30,7 +30,7 @@ export default function User(props) {
           <img alt="userIcon" src="https://i.imgur.com/2suEEVv.png" />
         </Grid>
       </Grid>
-      {skills.map((skill) => (
+      {reloadGrades && skills.map((skill) => (
         <Grade key={skill} skill={skill} {...props} />
       ))}
     </Grid>

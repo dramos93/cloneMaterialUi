@@ -79,12 +79,12 @@ export default function Search() {
       setShowOptionTextCategory(true);
     }
   };
-
+  
   return (
-    <Grid item xs={12}>
+    <Grid item xs={12} lg={12}>
       <Paper className={fixedHeightPaper}>
         <Grid container spacing={1}>
-          <Grid item lg={4} container direction="column">
+          <Grid item lg={4} xs={4} container direction="column">
             <Typography className={classes.typographyBold}>
               Categoria
             </Typography>
@@ -130,7 +130,7 @@ export default function Search() {
               </Typography>
             )}
           </Grid>
-          <Grid item lg={4} container direction="column">
+          <Grid item lg={4} xs={4} container direction="column">
             <Typography className={classes.typographyBold}>
               Habilidade
             </Typography>
@@ -179,6 +179,7 @@ export default function Search() {
           <Grid
             item
             lg={4}
+            xs={4}
             container
             alignItems="center"
             justify="flex-end"

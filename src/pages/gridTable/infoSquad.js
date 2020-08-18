@@ -11,14 +11,14 @@ const InfoSquad = () => {
       <Paper className={fixedHeightPaper}>
         {/* Aqui começa as info da Squad */}
         <Grid container spacing={1} style={{ height: "100%" }}>
-          <Grid item lg={1} container alignItems="center" justify="center">
+          <Grid item lg={1} xs={1} container alignItems="center" justify="center">
             <img
               src={iconHBSIS}
               alt="description"
               style={{ width: "49px" }}
             />
           </Grid>
-          <Grid item lg={10} container alignItems="center">
+          <Grid item lg={10} xs={10} container alignItems="center">
             <Typography className={classes.typographyBold}>
               Nome da Squad:&nbsp;
             </Typography>
@@ -46,7 +46,7 @@ const InfoSquad = () => {
             </Typography>
             <Typography>João Carlos, Marcos Machados</Typography>
           </Grid>
-          <Grid item lg={1} container alignItems="center">
+          <Grid item lg={1} xs={1} container alignItems="center">
             <Grid container direction="row" justify="flex-end" alignItems="center">
               <Button color="secondary" variant="contained">
                 Gráficos

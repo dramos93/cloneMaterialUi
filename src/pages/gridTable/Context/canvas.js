@@ -8,6 +8,10 @@ export default function CanvasProvider({ children }) {
   // Object.seal(obj);
   const [categories, setCategories] = useState(obj);
   const [skills, setSkills] = useState([]);
+  const [grades, setGrades] = useState(
+    JSON.parse(localStorage.getItem("grades"))
+  );
+  const [reloadGrades, setReloadGrades] = useState(true);
 
   // function deepFreeze(obj) {
   //   const props = Object.getOwnPropertyNames(obj);
@@ -24,7 +28,16 @@ export default function CanvasProvider({ children }) {
 
   return (
     <CanvasContext.Provider
-      value={{ categories, setCategories, skills, setSkills }}
+      value={{
+        categories,
+        setCategories,
+        skills,
+        setSkills,
+        grades,
+        setGrades,
+        reloadGrades,
+        setReloadGrades,
+      }}
     >
       {children}
     </CanvasContext.Provider>
@@ -33,6 +46,24 @@ export default function CanvasProvider({ children }) {
 export function useCanvas() {
   const context = useContext(CanvasContext);
 
-  const { categories, setCategories, skills, setSkills } = context;
-  return { categories, setCategories, skills, setSkills };
+  const {
+    categories,
+    setCategories,
+    skills,
+    setSkills,
+    grades,
+    setGrades,
+    reloadGrades,
+    setReloadGrades,
+  } = context;
+  return {
+    categories,
+    setCategories,
+    skills,
+    setSkills,
+    grades,
+    setGrades,
+    reloadGrades,
+    setReloadGrades,
+  };
 }
